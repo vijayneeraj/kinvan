@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kinvan Home Appliances</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#020617;
+color:white;
+}
+
+/* WATERMARK LOGO */
+
+body::before{
+content:"";
+position:fixed;
+top:50%;
+left:50%;
+width:800px;
+height:800px;
+background:url("assets/logo_light.jpg") center/contain no-repeat;
+opacity:0.03;
+transform:translate(-50%,-50%);
+pointer-events:none;
+z-index:0;
+}
+
+/* NAVBAR */
+
+header{
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+background:rgba(2,6,23,0.85);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+}
+
+.logo{
+height:65px;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-size:15px;
+opacity:0.8;
+}
+
+.nav a:hover{
+opacity:1;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+background:radial-gradient(circle at top,#0ea5e9,#020617 60%);
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.hero h1{
+font-size:55px;
+font-weight:700;
+line-height:1.1;
+}
+
+.hero p{
+margin-top:20px;
+color:#cbd5f5;
+font-size:18px;
+max-width:500px;
+}
+
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:14px 28px;
+background:linear-gradient(90deg,#06b6d4,#0ea5e9);
+border-radius:40px;
+text-decoration:none;
+color:white;
+font-weight:600;
+box-shadow:0 10px 30px rgba(14,165,233,0.6);
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+}
+
+/* FLOATING PRODUCT */
+
+.product-hero img{
+width:100%;
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0px)}
+}
+
+/* SECTION */
+
+section{
+padding:120px 0;
+position:relative;
+z-index:2;
+}
+
+/* PRODUCTS */
+
+.products-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:35px;
+}
+
+.product-card{
+
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+
+padding:30px;
+border-radius:15px;
+
+transition:0.4s;
+text-align:center;
+}
+
+.product-card img{
+width:100%;
+height:220px;
+object-fit:contain;
+}
+
+.product-card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 20px 40px rgba(0,0,0,0.7);
+}
+
+.product-logo{
+height:30px;
+margin-top:15px;
+}
+
+/* FEATURES */
+
+.features-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.feature{
+
+background:#0f172a;
+padding:30px;
+border-radius:12px;
+border:1px solid #1e293b;
+
+transition:.3s;
+}
+
+.feature:hover{
+transform:translateY(-6px);
+background:#020617;
+}
+
+.feature-icon{
+font-size:35px;
+margin-bottom:10px;
+color:#38bdf8;
+}
+
+/* CONTACT FORM */
+
+.contact-box{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+form input,
+form textarea{
+
+width:100%;
+padding:14px;
+margin-bottom:15px;
+
+background:#020617;
+border:1px solid #334155;
+border-radius:6px;
+color:white;
+}
+
+form button{
+
+background:#0ea5e9;
+border:none;
+padding:14px 30px;
+color:white;
+border-radius:30px;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+
+padding:40px 0;
+text-align:center;
+border-top:1px solid #1e293b;
+color:#94a3b8;
+
+}
+
+.footer-logo{
+height:70px;
+margin-bottom:15px;
+}
+
+/* WHATSAPP BUTTON */
+
+.whatsapp{
+
+position:fixed;
+bottom:25px;
+right:25px;
+background:#25D366;
+color:white;
+padding:15px 18px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+
+}
+
+/* SCROLL ANIMATION */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+@media(max-width:900px){
+
+.hero-grid{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.contact-box{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<img src="assets/logo_dark.png" class="logo">
+
+<div>
+<a href="#">Home</a>
+<a href="#products">Products</a>
+<a href="#features">Features</a>
+<a href="#contact">Contact</a>
+</div>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-grid">
+
+<div>
+
+<img src="assets/logo_dark.png" style="height:85px;margin-bottom:20px">
+
+<h1>Reliable Power Protection For Your Home</h1>
+
+<p>
+Kinvan stabilizers protect your valuable home appliances
+from dangerous voltage fluctuations using intelligent
+microprocessor technology.
+</p>
+
+<a class="btn" href="#contact">Contact Us</a>
+
+</div>
+
+<div class="product-hero">
+
+<img src="assets/product_img_3.png">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section id="products" class="reveal">
+
+<div class="container">
+
+<h2 style="text-align:center;margin-bottom:60px;font-size:36px;">Voltage Stabilizers</h2>
+
+<div class="products-grid">
+
+<div class="product-card">
+<img src="assets/product_img_1.png">
+</div>
+
+<div class="product-card">
+<img src="assets/product_img_2.png">
+</div>
+
+<div class="product-card">
+<img src="assets/product_img_3.png">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section id="features" class="reveal">
+
+<div class="container">
+
+<h2 style="text-align:center;margin-bottom:60px;font-size:36px;">Product Features</h2>
+
+<div class="features-grid">
+
+<div class="feature">
+<div class="feature-icon">⚡</div>
+Thermal Overload Protection
+</div>
+
+<div class="feature">
+<div class="feature-icon">🔌</div>
+Low & High Voltage Cut Protection
+</div>
+
+<div class="feature">
+<div class="feature-icon">💻</div>
+Microprocessor Controlled
+</div>
+
+<div class="feature">
+<div class="feature-icon">⏱</div>
+Time Delay Protection
+</div>
+
+<div class="feature">
+<div class="feature-icon">📟</div>
+Digital Display
+</div>
+
+<div class="feature">
+<div class="feature-icon">⚙</div>
+Microcontroller Based Models
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="reveal">
+
+<div class="container contact-box">
+
+<div>
+
+<img src="assets/logo_dark.png" style="height:80px;margin-bottom:20px">
+
+<h2 style="font-size:36px;margin-bottom:20px;">Contact Us</h2>
+
+<p>Kinvan Home Appliances</p>
+<p>Ravi Kumar Vijay</p>
+
+<p style="margin-top:20px">
+📞 9214340831<br>
+GST: 08AIWPVM3488M1ZW
+</p>
+
+</div>
+
+<form>
+
+<input placeholder="Your Name">
+
+<input placeholder="Phone Number">
+
+<input placeholder="City">
+
+<textarea rows="4" placeholder="Message"></textarea>
+
+<button>Send Enquiry</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<img src="assets/logo_dark.png" class="footer-logo">
+
+<p>Kinvan Home Appliances</p>
+
+<p>Reliable Voltage Protection Technology</p>
+
+<p>📞 9214340831</p>
+
+<p>© 2026 Kinvan Home Appliances</p>
+
+</footer>
+
+
+<a class="whatsapp" href="https://wa.me/919214340831">💬</a>
+
+
+<script>
+
+function reveal(){
+
+var reveals=document.querySelectorAll(".reveal");
+
+for(var i=0;i<reveals.length;i++){
+
+var windowHeight=window.innerHeight;
+var elementTop=reveals[i].getBoundingClientRect().top;
+var elementVisible=120;
+
+if(elementTop < windowHeight - elementVisible){
+
+reveals[i].classList.add("active");
+
+}
+
+}
+
+}
+
+window.addEventListener("scroll",reveal);
+
+</script>
+
+</body>
+</html>
